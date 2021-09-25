@@ -90,10 +90,10 @@ def request_history():
 			"https": "http://" + choice(proxies_https),
 		}
 
-		response = requests.get(url=url, proxies=proxies, headers=headers)
+		response = requests.get(url=url, proxies=proxies, headers=headers, allow_redirecst=True)
 
 	else:
-		response = requests.get(url=url, headers=headers)
+		response = requests.get(url=url, headers=headers, allow_redirects=True)
 
 	if response.history:
 		for link in response.history:
@@ -109,7 +109,7 @@ def request_history():
 
 def jammer():
 	i = 0
-	url = input("\n\nEnter the url >>> ")
+	url = input("\nEnter the url >>> ")
 	auto_proxies = input("Do you want auto proxies? [y/n] >>> ")
 
 	while True:
