@@ -134,13 +134,13 @@ def jammer():
 		}
 
 		if auto_proxies.lower() in ["y", "yes"]:
+
+			proxies = {
+				"http": "http://" + choice(proxies_http),
+				"https": "http://" + choice(proxies_https),
+			}
+
 			try:
-
-				proxies = {
-					"http": "http://" + choice(proxies_http),
-					"https": "http://" + choice(proxies_https),
-				}
-
 				response = requests.get(url=url, proxies=proxies, headers=headers)
 				print("[Successfully] " + str(proxies["http"]) +  " and " + str(proxies["https"]))
 				i += 1
