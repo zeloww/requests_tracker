@@ -26,6 +26,7 @@ for download with pip: `pip install bs4`: https://pypi.org.project/bs4
 ### IPlogger Jammer
 
 ![image](https://media.discordapp.net/attachments/850635541778792459/891305536241434674/unknown.png?width=1174&height=644)
+![image](https://media.discordapp.net/attachments/850635541778792459/891306361885958194/unknown.png?width=843&height=644)
 
 # Support
 Problem? => https://discord.gg/HNGETabkB9
