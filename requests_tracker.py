@@ -9,7 +9,7 @@ except:
 	import requests
 
 try:
-	from bs4 import BeautifulSoup4
+	from bs4 import BeautifulSoup
 
 except:
 	os.system("pip install bs4")
