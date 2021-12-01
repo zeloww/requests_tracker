@@ -98,6 +98,7 @@ def request_history():
 	if response.history:
 		for link in response.history:
 			print(f"[{link.status_code}] {link.url}")
+		 print(f"\n[{response.status_code}] {response.url}")
 
 		print("\nDown.")
 
