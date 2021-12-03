@@ -83,6 +83,8 @@ def request_history():
 	}
 
 	if auto_proxies.lower() in ["y", "yes"]:
+		if not proxies_http and not proxies_https:
+			getproxies()
 
 		proxies = {
 			"http": "http://" + choice(proxies_http),
@@ -201,7 +203,7 @@ def main():
 		except:
 			continue
 
-		if choice in [1, 2]:
+		if choice == 2:
 			if not proxies_http and not proxies_https:
 				getproxies()
 
