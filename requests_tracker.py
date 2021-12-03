@@ -30,7 +30,6 @@ proxies_http = []
 proxies_https = []
 
 def getproxies():
-	 
 	print("One second please...\n")
 
 	http_scrapeds = 0
@@ -98,7 +97,7 @@ def request_history():
 	if response.history:
 		for link in response.history:
 			print(f"[{link.status_code}] {link.url}")
-		print(f"\n[{response.status_code}] {response.url}")
+		print(f"[{response.status_code}] {response.url}")
 
 		print("\nDown.")
 
@@ -164,7 +163,7 @@ def jammer():
 	main()
 
 def whoisinfo():
-	link = input("Enter the url >>> ")
+	link = input("Enter the url >>> ").replace("https://", "").replace("http://", "")
 	url = "http://www.whois-raynette.fr/whois/" + link
 
 	response = requests.get(url)
@@ -181,11 +180,11 @@ def whoisinfo():
 
 def shorturl():
 	link = input("Enter the url >>> ")
-	url = f"https://api.shrtco.de/v2/shorten?url={link}/very/long/link.html"
+	url = f"https://api.shrtco.de/v2/shorten?url={link}"
 
-	response = requests.get(url)
-	print(response.text)
-	print("\n Your short link for: " + link + " is shrtco.de/" + json.loads(response.text)["result"]["code"])
+	response = requests.get(url).text.replace(r"\/", "/")
+	print(response)
+	print("\n Your short link for '" + link + "' is " + json.loads(response)["result"]["full_short_link"])
 
 	input()
 	main()
@@ -198,8 +197,13 @@ def main():
 
 		try:
 			choice = int(input(">>> "))
+
 		except:
 			continue
+
+		if choice in [1, 2]:
+			if not proxies_http and not proxies_https:
+				getproxies()
 
 		if choice == 1:
 			request_history()
@@ -216,12 +220,5 @@ def main():
 		elif choice == 4:
 			shorturl()
 			break
-		elif choice == 5:
-			subdomain()
-			break
 
-		else:
-			pass
-
-getproxies()
 main()
